@@ -1,2 +1,15 @@
 <p><%= @task.details %></p>
-<%= link_to "Back to tasks", tasks_path %>
+
+<% if @task.completed %>
+<p>Task is completed</p>
+<% else %>
+<p>Task is not completed</p>
+<% end %>
+
+
+<p><%= link_to "Delete",
+  delete_task_path(@task),
+  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+%></p>
+
+<p><%= link_to "Back to tasks", tasks_path %></p>
